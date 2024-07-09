@@ -45,3 +45,4 @@ function plusBThree() {
 plus1bDOM.addEventListener('click', plusBOne);
 plus2bDOM.addEventListener('click', plusBTwo);
 plus3bDOM.addEventListener('click', plusBThree);
+
