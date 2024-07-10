@@ -1,36 +1,27 @@
-const buttonsDOM = document.querySelectorAll('button');
-
-const displayJoDOM = buttonsDOM[0];
-const displayMaDOM = buttonsDOM[1];
-const displayPeDOM = buttonsDOM[2];
-const displayOnDOM = buttonsDOM[3];
-
-const summaryDOM = document.querySelector('section > p');
+const h1DOM = document.querySelector('h1');
+const buttonDOM = document.querySelector('button');
 
 
-function sayJonas() {
-    console.log('Jonas');
+const introductionDOM = document.getElementsByClassName('introduction')[0];
+const btnDOM = introductionDOM.getElementsByTagName('button');
+const paragraphDOM = document.getElementById('paragraph');
+
+
+
+function introduction(n = '_____') {
+    paragraphDOM.insertAdjacentHTML('afterBegin', `<p>Sveiki, mano vardas ${n}</p>`);
 }
 
+for (let i = 0; i < btnDOM.length; i++) {
+    btnDOM[i].addEventListener('click', () => introduction(btnDOM[i].innerText));
+}
 
-displayJoDOM.addEventListener('click', () => {
-    console.log('Jonas');
-});
-
-displayMaDOM.addEventListener('click', () => {
-    console.log('Marytė');
-});
-
-displayPeDOM.addEventListener('click', () => {
-    console.log('Petras');
-});
-
-displayOnDOM.addEventListener('click', () => {
-    console.log('Ona');
-});
+//btnDOM1.addEventListener('click', () => introduction(btnDOM1.innerText));
+//btnDOM2.addEventListener('click', () => introduction(btnDOM2.innerText));
+//btnDOM3.addEventListener('click', () => introduction(btnDOM3.innerText));
+//btnDOM4.addEventListener('click', () => introduction(btnDOM4.innerText));
 
 
-summaryDOM.innerText = summaryDOM.innerHTML;
 
 
 
