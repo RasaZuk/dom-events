@@ -1,0 +1,24 @@
+body,
+body * {
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 2rem;
+}
+
+
+div .name_list {
+    margin: 5rem;
+    font-size: 10rem;
+
+}
+.greeting {
+    font-size: 2rem;
+
+
+}

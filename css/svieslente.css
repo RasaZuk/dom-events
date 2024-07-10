@@ -22,7 +22,9 @@ main {
 }
 
 .summary {
-    font-size: 2rem;
+    display: flex;
+    flex-direction: column-reverse;
+    font-size: 1rem;
 }
 
 main div h1 {
