@@ -62,4 +62,13 @@ main div button {
     padding: 0.9rem;
 }
 
-
+section .delete {
+    background-color: white;
+    color: black;
+    width: 4rem;
+    height: 0.5rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    padding-top: 0.3rem;
+    
+}

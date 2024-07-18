@@ -12,35 +12,46 @@ const result2DOM = document.querySelector('.b_komanda > .final2');
 
 const summaryDOM = document.querySelector('section > div');
 
-const localData = localStorage.getItem('scores');
+
+
 let scoresData = [];
 
-if (localData !== null) {
-    scoreData = JSON.parse(localData);
-    renderList();
-}
-
+scoresData = localStorage.getItem('scores');
 
 let total = 0;
 let sumA = 0;
 
+
+
+const deleteDOM = document.querySelector('button.delete');
+
 function plusAOne() {
     total++;
     result1DOM.textContent = total;
-    sumA = `<p>${Date.now()}; A komanda + 1;</p> `;
+    sumA = `<p>${formatTime(Date.now())} → A komanda + 1 <button class="delete">Delete</button></p>`;
     summaryDOM.innerHTML += sumA;
+
+    deleteDOM.addEventListener('click', () => {
+        scoresData.splice(i, 1);
+        localStorage.setItem('scores', JSON.stringify(scoresData));
+    });
 }
+
+
+
 function plusATwo() {
     total += 2;
     result1DOM.textContent = total;
-    sumA = `<p>${new Date()}; A komanda + 2</p> `;
+    sumA = `<p>${formatTime(Date.now())} → A komanda + 2 <button class="delete">Delete</button></p> `;
     summaryDOM.innerHTML += sumA;
+    localStorage.setItem('scores', JSON.stringify(scoresData));
 }
 function plusAThree() {
     total += 3;
     result1DOM.textContent = total;
-    sumA = `<p>A komanda + 3</p> `;
+    sumA = `<p>${formatTime(Date.now())} → A komanda + 3 <button class="delete">Delete</button></p> `;
     summaryDOM.innerHTML += sumA;
+    localStorage.setItem('scores', JSON.stringify(scoresData));
 }
 plus1aDOM.addEventListener('click', plusAOne);
 plus2aDOM.addEventListener('click', plusATwo);
@@ -55,75 +66,29 @@ let sumB = 0;
 function plusBOne() {
     total2++;
     result2DOM.textContent = total2;
-    sumB = `<p>B komanda + 1</p> `;
+    sumB = `<p>${formatTime(Date.now())} → B komanda + 1 <button class="delete">Delete</button></p> `;
     summaryDOM.innerHTML += sumB;
+    localStorage.setItem('scores', JSON.stringify(scoresData));
 }
 function plusBTwo() {
     total2 += 2;
     result2DOM.textContent = total2;
-    sumB = `<p>B komanda + 2</p> `;
+    sumB = `<p>${formatTime(Date.now())} → B komanda + 2 <button class="delete">Delete</button></p> `;
     summaryDOM.innerHTML += sumB;
+    localStorage.setItem('scores', JSON.stringify(scoresData));
 }
 function plusBThree() {
     total2 += 3;
     result2DOM.textContent = total2;
-    sumB = `<p>B komanda + 3</p> `;
+    sumB = `<p>${formatTime(Date.now())} → B komanda + 3 <button class="delete">Delete</button></p> `;
     summaryDOM.innerHTML += sumB;
+    localStorage.setItem('scores', JSON.stringify(scoresData));
 }
 plus1bDOM.addEventListener('click', plusBOne);
 plus2bDOM.addEventListener('click', plusBTwo);
 plus3bDOM.addEventListener('click', plusBThree);
 
 
-
-
-submitButtonDOM.addEventListener('click', e => {
-    e.prevent.Default();
-
-    scoresData.push({
-        createdAt: Date.now(),
-        text: summaryDOM.value,
-        state: 'scores',
-    });
-    localStorage.setItem('scores', JSON.stringify(scoresData));
-    renderList();
-});
-
-function renderList() {
-    if (scoresData.length === 0) {
-        renderEmptyList();
-    } else {
-        renderTaskList();
-    }
-}
-
-function renderTaskList() {
-    let HTML = '';
-
-    for (const scores of scoresData) {
-        HTML += `
-
-        <section data-state="${scores.state}">
-            <div>${formatTime(scores.createdAt)}</div>
-            <div>${scores.text}</div>
-            <div>
-                <button>Delete</button>
-            </div>
-        </section>`;
-    }
-
-    const sectionDOM = document.querySelector('section');
-
-    for (let i = 0; i < sectionDOM.length; i++) {
-        const sectionDOM = sectionDOM[i];
-
-        const deleteDOM = sectionDOM.querySelector('button.delete');
-        deleteDOM.addEventListener('click', () => {
-            scoresData.splice(i, 1);
-            renderList();
-        })
-    }
-}
 
 
 function formatTime(timeInMs) {
@@ -137,10 +102,4 @@ function formatTime(timeInMs) {
     const s = (date.getSeconds() < 10 ? '0' : '') + date.getSeconds();
 
     return `${y} -${m} -${d} ${h}:${mn}:${s} `;
-
-}
-
-
-
-
-
+};
