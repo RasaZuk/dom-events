@@ -66,7 +66,7 @@ let sumB = 0;
 function plusBOne() {
     total2++;
     result2DOM.textContent = total2;
-    sumB = `<p>${formatTime(Date.now())} → B komanda + 1 <button class="delete">Delete</button></p> `;
+    sumB = `<p>${formatTime(Date.now())} → B komanda + 1 <button type="button" class="delete">Delete</button></p> `;
     summaryDOM.innerHTML += sumB;
     localStorage.setItem('scores', JSON.stringify(scoresData));
 }
